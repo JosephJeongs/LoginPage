@@ -1,23 +1,39 @@
 from kivy.app import App
+from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
+Builder.load_file("QuizPage.kv")
 
+class QuizPageApp(App):
+    def build(self):
+        return QuizManager()
 
-class LoginPageApp(App):
+class QuizManager(ScreenManager):
     pass
 
-class LoginManager(ScreenManager):
-    pass
 
+#Questions
 class Question1Screen(Screen):
-    pass
+    def answer_question(self, bool):
+        if bool:
+            self.manager.current = "correct"
+        else:
+            self.manager.current = "error"
+
+class Question2Screen(Screen):
+    def answer_question(self, bool):
+        if bool:
+            self.manager.current = "correct"
+        else:
+            self.manager.current = "error"
+
 
 class CorrectScreen(Screen):
-    pass
+    def next(self):
+        self.manager.current = "question2"
 
 class ErrorScreen(Screen):
-    pass
+    def next(self):
+        self.manager.current = "question2"
 
 
-
-
-LoginPageApp().run()
+QuizPageApp().run()

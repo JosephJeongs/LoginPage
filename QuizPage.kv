@@ -1,0 +1,64 @@
+<QuizManager>:
+    Question1Screen:
+        name: "question1"
+    Question2Screen:
+        name: "question2"
+    CorrectScreen:
+        name: "correct"
+    ErrorScreen:
+        name: "error"
+
+
+
+<Question1Screen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: 10
+        Label:
+            text: "Which one is a v-engine?"
+        BoxLayout:
+            Button:
+                background_normal: "rotary.jpg"
+                id: option 1
+                on_release: root.answer_question(False)
+            Button:
+                background_normal: "box_engine.jpg"
+                id: option 2
+                on_release: root.answer_question(False)
+            Button:
+                background_normal: "v_engine1.jpg"
+                id: option 3
+                on_release: root.answer_question(True)
+
+<Question2Screen>:
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "Complete the following verse: \n\nMonday left me _____"
+            size_hint: 1,3
+        TextInput:
+            id: broken
+            hint_text: "Enter"
+        Button
+            text: "Press enter"
+            on_release: root.answer_question(broken.text)
+
+
+<CorrectScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "Correct!"
+        Button:
+            text: "Next Question"
+            on_release: root.next()
+
+
+<ErrorScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "Incorrect."
+        Button:
+            text: "Next Question"
+            on_release: root.next()
