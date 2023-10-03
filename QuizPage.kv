@@ -8,8 +8,6 @@
     ErrorScreen:
         name: "error"
 
-
-
 <Question1Screen>:
     BoxLayout:
         orientation: "vertical"
@@ -33,6 +31,9 @@
 <Question2Screen>:
     BoxLayout:
         orientation: "vertical"
+        Label:
+            id: invalid_guess
+            text: ""
         Label:
             text: "Complete the following verse: \n\nMonday left me _____"
             size_hint: 1,3

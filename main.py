@@ -1,7 +1,7 @@
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
-Builder.load_file("QuizPage.kv")
+Builder.load_file("LoginPage.kv")
 
 class QuizPageApp(App):
     def build(self):
@@ -20,12 +20,12 @@ class Question1Screen(Screen):
             self.manager.current = "error"
 
 class Question2Screen(Screen):
-    def answer_question(self, bool):
-        if bool:
+    def answer_question(self, answer):
+        if answer.lower() == "broken":
             self.manager.current = "correct"
         else:
-            self.manager.current = "error"
-
+            self.ids.invalid_guess.text = "Invalid guess \n\n Try again"
+            self.ids.invalid_guess.color = "red"
 
 class CorrectScreen(Screen):
     def next(self):
@@ -37,3 +37,18 @@ class ErrorScreen(Screen):
 
 
 QuizPageApp().run()
+
+class LoginPageApp(App):
+    def build(self):
+        return LoginManager()
+
+class LoginManager(ScreenManager):
+    pass
+
+class LoginPage(Screen):
+    pass
+
+class AccountRegister(Screen):
+    pass
+
+LoginPageApp().run()
